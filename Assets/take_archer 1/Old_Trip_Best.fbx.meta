@@ -17,19 +17,53 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Old_Trip_Best' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'sophi1_Head' has translation animation
+      that will be discarded.\n\t'sophi1_LeftHand' has translation animation that
+      will be discarded.\n\t'sophi1_RightHand' has translation animation that will
+      be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Old_Trip_Best
+      takeName: Old_Trip_Best
+      internalID: -6633911442244193124
+      firstFrame: 268
+      lastFrame: 767
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -79,8 +113,286 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: sophi1_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: sophi1_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Old_Trip_Best(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_Hips
+      parentName: Old_Trip_Best(Clone)
+      position: {x: 0, y: 0.93966305, z: 0}
+      rotation: {x: 0.060213406, y: -0.0052992157, z: 0.028009044, w: 0.9977784}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_Spine
+      parentName: sophi1_Hips
+      position: {x: -0, y: 0.07569048, z: 0}
+      rotation: {x: -0.16843821, y: -0.01890722, z: -0.027593426, w: 0.98514456}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_Spine1
+      parentName: sophi1_Spine
+      position: {x: -0, y: 0.16652913, z: 0.0000000686917}
+      rotation: {x: -0.0023102914, y: -0.0065245223, z: 0.0115168, w: 0.99990976}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_Neck
+      parentName: sophi1_Spine1
+      position: {x: -0, y: 0.22662252, z: 0}
+      rotation: {x: 0.28226176, y: 0.001627089, z: -0.07016818, w: 0.9567665}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_Head
+      parentName: sophi1_Neck
+      position: {x: -0.000000029802322, y: 0.13145256, z: 0.016961575}
+      rotation: {x: -0.1291692, y: -0.011866204, z: 0.032519773, w: 0.9910182}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftShoulder
+      parentName: sophi1_Spine1
+      position: {x: -0.03708401, y: 0.18733001, z: -0.0034388453}
+      rotation: {x: 0.05864171, y: 0.07152285, z: -0.060485832, w: 0.99387485}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftArm
+      parentName: sophi1_LeftShoulder
+      position: {x: -0.11962272, y: 0, z: 0}
+      rotation: {x: -0.014879283, y: -0.029976446, z: 0.07720695, w: 0.99645334}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftForeArm
+      parentName: sophi1_LeftArm
+      position: {x: -0.27741367, y: 0, z: 0}
+      rotation: {x: -0.016649494, y: 0.00019692304, z: -0.04203285, w: 0.9989775}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftHand
+      parentName: sophi1_LeftForeArm
+      position: {x: -0.22030213, y: 0.00000047683716, z: 0.00000047683716}
+      rotation: {x: -0.016600048, y: 0.055652898, z: 0.067852765, w: 0.9960036}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightShoulder
+      parentName: sophi1_Spine1
+      position: {x: 0.03675814, y: 0.18733001, z: -0.0034388453}
+      rotation: {x: 0.03944208, y: -0.06634908, z: 0.024561942, w: 0.99671406}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightArm
+      parentName: sophi1_RightShoulder
+      position: {x: 0.11962272, y: 0, z: 0}
+      rotation: {x: 0.011332504, y: 0.052557986, z: -0.067484446, w: 0.99627066}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightForeArm
+      parentName: sophi1_RightArm
+      position: {x: 0.27741367, y: 0, z: 0}
+      rotation: {x: -0.07379615, y: 0.006208386, z: 0.014119349, w: 0.99715406}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightHand
+      parentName: sophi1_RightForeArm
+      position: {x: 0.2267478, y: -0.00000011920929, z: 0.000000059604645}
+      rotation: {x: -0.07318849, y: -0.06509358, z: -0.111341685, w: 0.9889435}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftUpLeg
+      parentName: sophi1_Hips
+      position: {x: -0.09230546, y: 0, z: 0}
+      rotation: {x: -0.054219715, y: -0.0012759772, z: -0.026063915, w: 0.998188}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftLeg
+      parentName: sophi1_LeftUpLeg
+      position: {x: -0, y: -0.3610698, z: 0}
+      rotation: {x: 0.014406644, y: -0.050702967, z: 0.025176622, w: 0.99829245}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftFoot
+      parentName: sophi1_LeftLeg
+      position: {x: -0, y: -0.43093508, z: 0}
+      rotation: {x: 0.24438652, y: -0.020495761, z: -0.04264697, w: 0.9685228}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_LeftToeBase
+      parentName: sophi1_LeftFoot
+      position: {x: -0, y: -0.059998546, z: 0.13845819}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightUpLeg
+      parentName: sophi1_Hips
+      position: {x: 0.09230546, y: 0, z: 0}
+      rotation: {x: -0.03268656, y: -0.019967772, z: -0.013726128, w: 0.9991719}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightLeg
+      parentName: sophi1_RightUpLeg
+      position: {x: -0, y: -0.3610698, z: 0}
+      rotation: {x: 0.010642415, y: 0.10091787, z: -0.04983377, w: 0.9935889}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightFoot
+      parentName: sophi1_RightLeg
+      position: {x: -0, y: -0.43093508, z: 0}
+      rotation: {x: 0.21458754, y: 0.1317093, z: -0.046180587, w: 0.9666811}
+      scale: {x: 1, y: 1, z: 1}
+    - name: sophi1_RightToeBase
+      parentName: sophi1_RightFoot
+      position: {x: -0, y: -0.059998546, z: 0.13845819}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -91,13 +403,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
