@@ -57,7 +57,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2787579392637666141, guid: e04a5261102f89d4e85e8515daf519d8, type: 3}
+  m_Motion: {fileID: -2787579392637666141, guid: c1508f0b95d77a44b82eec85737a7c32, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -255,7 +255,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3595016049738819074, guid: 621c00ee935704a40bfe5b1626bf184d, type: 3}
+  m_Motion: {fileID: -3595016049738819074, guid: 5c759128b50d5e54b9fe7577f25e878c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -462,7 +462,7 @@ AnimatorController:
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Walk
     m_Type: 9
@@ -494,7 +494,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: BlanceWalk
+  - m_Name: BalanceWalk
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -635,7 +635,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1414901647967004360, guid: 45b4ccf44d0859d46ac39caac14908c7, type: 3}
+  m_Motion: {fileID: 1414901647967004360, guid: 9b7a86dace681a848ad472f43cb1b616, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -661,7 +661,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8925441507018032106, guid: c5d2d77e9ec1dbb47b1fcbc639281cd9, type: 3}
+  m_Motion: {fileID: 8925441507018032106, guid: 563a05e8c4e57f54ba8f1c9818dc5453, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -678,7 +678,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8158183713880801697}
-    m_Position: {x: 250, y: 30, z: 0}
+    m_Position: {x: 250, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4778299693120738497}
     m_Position: {x: 738.9082, y: -160.01854, z: 0}
@@ -743,13 +743,6 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -7129574204109952422}
-    second:
-    - {fileID: 449098148498852415}
-    - {fileID: -7409580508296376397}
-    - {fileID: 3267418818093831266}
-    - {fileID: -8558031754547476974}
-    - {fileID: -1208951819185413770}
   - first: {fileID: -1723358235352144529}
     second:
     - {fileID: 6929019719806894648}
@@ -766,6 +759,13 @@ AnimatorStateMachine:
     - {fileID: -2867768474140097673}
     - {fileID: 4550772748042933135}
     - {fileID: -7071926706859396284}
+  - first: {fileID: -7129574204109952422}
+    second:
+    - {fileID: 449098148498852415}
+    - {fileID: -7409580508296376397}
+    - {fileID: 3267418818093831266}
+    - {fileID: -8558031754547476974}
+    - {fileID: -1208951819185413770}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -887,7 +887,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -7459876382862507956, guid: b3a7fe11fc8fd5340aa4c5c4b640e4fe, type: 3}
+  m_Motion: {fileID: -7459876382862507956, guid: 80656f68ceaa15a4cbaf8153ae3b1354, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -990,7 +990,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8445497206717739672, guid: a35b914c87db862469ac3b9f4458cbdf, type: 3}
+  m_Motion: {fileID: 8445497206717739672, guid: 9ac55cd4c8da56644b5c74e253c61f65, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1050,7 +1050,7 @@ AnimatorTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: BlanceWalk
+    m_ConditionEvent: BalanceWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4778299693120738497}
