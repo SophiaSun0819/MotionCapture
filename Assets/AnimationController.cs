@@ -6,7 +6,7 @@ public class AnimationController : MonoBehaviour
 {
     Trigger,
     Bool,
-    Int
+   
 }
 
     public struct AnimEvent
