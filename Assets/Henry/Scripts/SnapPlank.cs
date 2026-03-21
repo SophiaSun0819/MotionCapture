@@ -10,6 +10,9 @@ public class SnapPlank : MonoBehaviour
     public Transform snapPoint;
     public float snapDistance = 0.35f;
     public string snapZoneTag = "PlankSnapZone";
+    public bool allowSnapWhileHeld = true;
+    public bool parentToSnapPoint = false;
+    public bool disableColliderAfterSnap = false;
 
     [Header("Hover Visual")]
     public GameObject hoverVisual;
@@ -22,15 +25,19 @@ public class SnapPlank : MonoBehaviour
 
     private XRGrabInteractable grabInteractable;
     private Rigidbody rb;
+    private Collider[] colliders;
 
     private bool isSnapped = false;
     private bool hoverSoundPlayed = false;
     private bool isHeld = false;
 
+    public bool IsSnapped => isSnapped;
+
     private void Awake()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
         rb = GetComponent<Rigidbody>();
+        colliders = GetComponentsInChildren<Collider>();
 
         if (hoverVisual != null)
             hoverVisual.SetActive(false);
@@ -100,8 +107,8 @@ public class SnapPlank : MonoBehaviour
     {
         if (isSnapped) return;
         if (!other.CompareTag(snapZoneTag)) return;
+        if (!allowSnapWhileHeld && isHeld) return;
 
-        // Optional: allow snap while still held if close enough
         TrySnap();
     }
 
@@ -120,8 +127,10 @@ public class SnapPlank : MonoBehaviour
         isSnapped = true;
         isHeld = false;
 
-        // If currently selected, force deselect by disabling interactable briefly
-        grabInteractable.enabled = false;
+        if (grabInteractable.isSelected)
+        {
+            grabInteractable.enabled = false;
+        }
 
         transform.position = snapPoint.position;
         transform.rotation = snapPoint.rotation;
@@ -130,6 +139,20 @@ public class SnapPlank : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;
         rb.useGravity = false;
+
+        if (parentToSnapPoint)
+            transform.SetParent(snapPoint);
+
+        if (disableColliderAfterSnap)
+        {
+            foreach (var col in colliders)
+            {
+                if (col != null && !col.isTrigger)
+                    col.enabled = false;
+            }
+        }
+
+        grabInteractable.enabled = false;
 
         if (hoverVisual != null)
             hoverVisual.SetActive(false);
