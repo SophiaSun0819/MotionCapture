@@ -36,15 +36,7 @@ public class TurnPage : MonoBehaviour
             //  SwicthPage(page2,page3);
         }
     }
-    // void SwicthPage(GameObject currentPage,GameObject nextPage)
-    // {
-    //     StartCoroutine(Shrink());
-    //     currentPage.SetActive(false);
-    //     nextPage.SetActive(true);
-
-
-    // }
-    // 核心修改：将 SwitchPage 逻辑封装进一个大的协程序列
+    
     IEnumerator SwitchPageSequence(GameObject currentPage, GameObject nextPage)
     {
         // 1. 先让当前页面缩小
@@ -53,7 +45,7 @@ public class TurnPage : MonoBehaviour
         // 2. 缩小动画彻底播完后，再切换显示状态
         if (currentPage != null) currentPage.SetActive(false);
         if (nextPage != null) nextPage.SetActive(true);
-
+         yield return new WaitForSeconds(0.7f);
         // 3. 让新页面展开
         yield return StartCoroutine(Expand());
     }
