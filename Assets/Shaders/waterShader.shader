@@ -83,8 +83,8 @@ Shader "Custom/VRWaterSimple"
             float3 worldPos = TransformObjectToWorld(v.positionOS.xyz);
 
             // 🌊 波浪计算
-            float wave = sin(worldPos.x * _WaveFrequency + _Time.y * _WaveSpeed)
-                    + cos(worldPos.z * _WaveFrequency + _Time.y * _WaveSpeed);
+            float wave = sin(worldPos.x * _WaveFrequency - _Time.y * _WaveSpeed)
+                    + cos(worldPos.z * _WaveFrequency - _Time.y * _WaveSpeed);
 
             wave *= _WaveAmplitude;
 

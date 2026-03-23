@@ -150,9 +150,9 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _WaveAmplitude: 0.021
-    - _WaveFrequency: 0.89
-    - _WaveSpeed: 0.73
+    - _WaveAmplitude: 0.273
+    - _WaveFrequency: 4.93
+    - _WaveSpeed: 0.44
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _edge_width: 0.1
