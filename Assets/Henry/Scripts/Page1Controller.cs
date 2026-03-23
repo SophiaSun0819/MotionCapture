@@ -11,13 +11,9 @@ public class Page1Controller : MonoBehaviour
 
     [Header("Page Objects")]
     public GameObject pageRoot;
-    public GameObject pageMagicVFXPlaceholder;
 
     [Header("Audio")]
     public AudioSource voSource;
-    public AudioSource sfxSource;
-    public AudioClip pageTurnClip;
-    public AudioClip pageMagicClip;
 
     [Header("Voice Over")]
     public AudioClip introClip;
@@ -83,23 +79,6 @@ public class Page1Controller : MonoBehaviour
         childMotor.WarpTo(startPoint);
         yield return null;
         yield return null;
-
-        if (!skipIntroSequence)
-        {
-            PlaySFX(pageTurnClip);
-
-            if (pageMagicVFXPlaceholder != null)
-                pageMagicVFXPlaceholder.SetActive(true);
-
-            PlaySFX(pageMagicClip);
-
-            yield return new WaitForSeconds(pageMagicDuration);
-
-            if (pageMagicVFXPlaceholder != null)
-                pageMagicVFXPlaceholder.SetActive(false);
-
-            yield return PlayVO(introClip);
-        }
 
         childMotor.MoveTo(bridgeWaitPoint);
 
@@ -173,12 +152,6 @@ public class Page1Controller : MonoBehaviour
 
         while (voSource.isPlaying)
             yield return null;
-    }
-
-    private void PlaySFX(AudioClip clip)
-    {
-        if (clip == null || sfxSource == null) return;
-        sfxSource.PlayOneShot(clip);
     }
 
     private void Log(string msg)

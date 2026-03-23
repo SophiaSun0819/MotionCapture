@@ -1072,15 +1072,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowController: {fileID: 1422092542}
-  autoStartOnEnable: 0
-  skipIntroSequence: 0
+  autoStartOnEnable: 1
+  skipIntroSequence: 1
   verboseLogs: 0
   pageRoot: {fileID: 594033436}
-  pageMagicVFXPlaceholder: {fileID: 0}
   voSource: {fileID: 168460220}
-  sfxSource: {fileID: 786233599}
-  pageTurnClip: {fileID: 0}
-  pageMagicClip: {fileID: 0}
   introClip: {fileID: 8300000, guid: 8eddd7736abd83c4396563e6065a17ca, type: 3}
   walkingToBridgeClip: {fileID: 8300000, guid: fef5f6bb8ffafd94ca031b49bd4f4eea, type: 3}
   idleAtBridgeClip: {fileID: 8300000, guid: 8d9f4e2b357982e4587cb2021ff89d5b, type: 3}
@@ -5897,7 +5893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &437050140
 Transform:
   m_ObjectHideFlags: 0
@@ -7933,7 +7929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &594033437
 Transform:
   m_ObjectHideFlags: 0
@@ -13225,11 +13221,7 @@ MonoBehaviour:
   skipIntroSequence: 0
   verboseLogs: 0
   pageRoot: {fileID: 729980973}
-  pageMagicVFXPlaceholder: {fileID: 0}
   voSource: {fileID: 168460220}
-  sfxSource: {fileID: 786233599}
-  pageTurnClip: {fileID: 0}
-  pageMagicClip: {fileID: 0}
   walkingToCliffClip: {fileID: 8300000, guid: 2e177b8e90b88dc489ab6b30501cc471, type: 3}
   cliffIdleClip: {fileID: 8300000, guid: 46a9e1453a94da3469a814a0ddbe6b24, type: 3}
   adultCliffIdleClip: {fileID: 8300000, guid: 448454d2ab96b1a4c90d178fe0c71780, type: 3}
@@ -13464,13 +13456,25 @@ PrefabInstance:
       propertyPath: portal
       value: 
       objectReference: {fileID: 507823316}
+    - target: {fileID: 6339222576110375488, guid: 5e50394645c1fdd4ba32004847d9ebe8, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 168460220}
+    - target: {fileID: 6339222576110375488, guid: 5e50394645c1fdd4ba32004847d9ebe8, type: 3}
+      propertyPath: pageTurnClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cbaf97037cd462d4fa68e57e9d697b8f, type: 3}
     - target: {fileID: 7740314240019487844, guid: 5e50394645c1fdd4ba32004847d9ebe8, type: 3}
       propertyPath: radius
-      value: 0
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740314240019487844, guid: 5e50394645c1fdd4ba32004847d9ebe8, type: 3}
+      propertyPath: duration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7740314240019487844, guid: 5e50394645c1fdd4ba32004847d9ebe8, type: 3}
       propertyPath: triggerExpand
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7740314240019487844, guid: 5e50394645c1fdd4ba32004847d9ebe8, type: 3}
       propertyPath: triggerShrink
@@ -16149,11 +16153,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1284450888}
   animator: {fileID: 1284450889}
+  visualRoot: {fileID: 0}
   walkBool: Walk
   sitTrigger: Sit
   bigJumpTrigger: BigJump
   smallJumpTrigger: SmallJump
   arrivalThreshold: 0
+  turnSpeed: 10
+  rotateVisualToMovement: 1
 --- !u!1001 &1287130561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18422,7 +18429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1422092541
 Transform:
   m_ObjectHideFlags: 0
@@ -22293,7 +22300,7 @@ Transform:
   m_GameObject: {fileID: 1860830109}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.26, y: 0.56, z: -0.61999893}
+  m_LocalPosition: {x: -7.26, y: 5.7, z: -0.61999893}
   m_LocalScale: {x: 5.3094406, y: 5.5962, z: 5.5962}
   m_ConstrainProportionsScale: 0
   m_Children: []

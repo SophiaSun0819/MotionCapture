@@ -6,6 +6,7 @@ public class SimpleCharacterMotor : MonoBehaviour
     [Header("References")]
     public NavMeshAgent agent;
     public Animator animator;
+    public Transform visualRoot;
 
     [Header("Animator Params")]
     public string walkBool = "Walk";
@@ -16,13 +17,20 @@ public class SimpleCharacterMotor : MonoBehaviour
     [Header("Arrival")]
     public float arrivalThreshold = 0.03f;
 
+    [Header("Turning")]
+    public float turnSpeed = 10f;
+    public bool rotateVisualToMovement = true;
+
     private Transform currentTarget;
     private bool destinationSet = false;
 
     private void Reset()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+
+        if (visualRoot == null && animator != null)
+            visualRoot = animator.transform;
     }
 
     private void Awake()
@@ -31,7 +39,15 @@ public class SimpleCharacterMotor : MonoBehaviour
             agent = GetComponent<NavMeshAgent>();
 
         if (animator == null)
-            animator = GetComponent<Animator>();
+            animator = GetComponentInChildren<Animator>();
+
+        if (visualRoot == null && animator != null)
+            visualRoot = animator.transform;
+    }
+
+    private void Update()
+    {
+        RotateVisualTowardMovement();
     }
 
     public void WarpTo(Transform point)
@@ -39,7 +55,11 @@ public class SimpleCharacterMotor : MonoBehaviour
         if (agent == null || point == null) return;
 
         agent.Warp(point.position);
+        transform.position = point.position;
         transform.rotation = point.rotation;
+
+        if (visualRoot != null)
+            visualRoot.rotation = point.rotation;
 
         currentTarget = null;
         destinationSet = false;
@@ -47,25 +67,26 @@ public class SimpleCharacterMotor : MonoBehaviour
         SetWalk(false);
     }
 
-    public void MoveTo(Transform point)
+    public bool MoveTo(Transform point)
     {
-        MoveToInternal(point, true);
+        return MoveToInternal(point, true);
     }
 
-    public void MoveToNoWalk(Transform point)
+    public bool MoveToNoWalk(Transform point)
     {
-        MoveToInternal(point, false);
+        return MoveToInternal(point, false);
     }
 
-    private void MoveToInternal(Transform point, bool useWalkAnim)
+    private bool MoveToInternal(Transform point, bool useWalkAnim)
     {
-        if (agent == null || point == null) return;
+        if (agent == null || point == null) return false;
 
         currentTarget = point;
         agent.isStopped = false;
         destinationSet = agent.SetDestination(point.position);
 
         SetWalk(useWalkAnim && destinationSet);
+        return destinationSet;
     }
 
     public void StopMoving()
@@ -113,7 +134,11 @@ public class SimpleCharacterMotor : MonoBehaviour
 
         if (dir.sqrMagnitude < 0.0001f) return;
 
-        transform.rotation = Quaternion.LookRotation(dir);
+        Quaternion lookRot = Quaternion.LookRotation(dir.normalized);
+        transform.rotation = lookRot;
+
+        if (visualRoot != null)
+            visualRoot.rotation = lookRot;
     }
 
     public void PlayBigJump()
@@ -138,6 +163,25 @@ public class SimpleCharacterMotor : MonoBehaviour
 
         if (animator != null && !string.IsNullOrEmpty(sitTrigger))
             animator.SetTrigger(sitTrigger);
+    }
+
+    private void RotateVisualTowardMovement()
+    {
+        if (!rotateVisualToMovement || visualRoot == null || agent == null)
+            return;
+
+        Vector3 vel = agent.velocity;
+        vel.y = 0f;
+
+        if (vel.sqrMagnitude < 0.0001f)
+            return;
+
+        Quaternion targetRot = Quaternion.LookRotation(vel.normalized);
+        visualRoot.rotation = Quaternion.Slerp(
+            visualRoot.rotation,
+            targetRot,
+            Time.deltaTime * turnSpeed
+        );
     }
 
     private void SetWalk(bool value)
