@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Page1Controller : MonoBehaviour
 {
+    public MapFlowController flowController;
     [Header("Debug")]
     public bool autoStartOnEnable = false;
     public bool skipIntroSequence = false;
@@ -154,6 +155,12 @@ public class Page1Controller : MonoBehaviour
         yield return PlayVO(diaryClip);
 
         Log("Page 1 complete.");
+
+        // GO BACK TO MAP
+        if (flowController != null)
+        {
+            flowController.GoToMap2();
+        }
     }
 
     private IEnumerator PlayVO(AudioClip clip)
@@ -184,4 +191,5 @@ public class Page1Controller : MonoBehaviour
     {
         Debug.LogError("[Page1Controller] " + msg, this);
     }
+    
 }

@@ -39,8 +39,8 @@ ModelImporter:
       name: Adult_BigJump
       takeName: Adult_BigJump
       internalID: 6984623573872346329
-      firstFrame: 558
-      lastFrame: 849
+      firstFrame: 636
+      lastFrame: 705
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -51,7 +51,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0

@@ -1054,9 +1054,9 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: -3113975286635995852}
   m_StateMachineTransitions:
-  - first: {fileID: 5941758491634568073}
-    second: []
   - first: {fileID: 5076096032077885476}
+    second: []
+  - first: {fileID: 5941758491634568073}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 670, y: 80, z: 0}
