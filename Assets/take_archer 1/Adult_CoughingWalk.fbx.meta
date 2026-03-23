@@ -39,7 +39,7 @@ ModelImporter:
       name: Adult_CoughingWalk
       takeName: Adult_CoughingWalk
       internalID: 6064270089607048230
-      firstFrame: 167
+      firstFrame: 736
       lastFrame: 1566
       wrapMode: 0
       orientationOffsetY: 0
@@ -48,9 +48,9 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1

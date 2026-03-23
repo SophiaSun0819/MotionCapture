@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Page1Controller : MonoBehaviour
 {
+    public MapFlowController flowController;
     [Header("Debug")]
     public bool autoStartOnEnable = false;
     public bool skipIntroSequence = false;
@@ -10,13 +11,9 @@ public class Page1Controller : MonoBehaviour
 
     [Header("Page Objects")]
     public GameObject pageRoot;
-    public GameObject pageMagicVFXPlaceholder;
 
     [Header("Audio")]
     public AudioSource voSource;
-    public AudioSource sfxSource;
-    public AudioClip pageTurnClip;
-    public AudioClip pageMagicClip;
 
     [Header("Voice Over")]
     public AudioClip introClip;
@@ -83,23 +80,6 @@ public class Page1Controller : MonoBehaviour
         yield return null;
         yield return null;
 
-        if (!skipIntroSequence)
-        {
-            PlaySFX(pageTurnClip);
-
-            if (pageMagicVFXPlaceholder != null)
-                pageMagicVFXPlaceholder.SetActive(true);
-
-            PlaySFX(pageMagicClip);
-
-            yield return new WaitForSeconds(pageMagicDuration);
-
-            if (pageMagicVFXPlaceholder != null)
-                pageMagicVFXPlaceholder.SetActive(false);
-
-            yield return PlayVO(introClip);
-        }
-
         childMotor.MoveTo(bridgeWaitPoint);
 
         if (!skipIntroSequence)
@@ -154,6 +134,12 @@ public class Page1Controller : MonoBehaviour
         yield return PlayVO(diaryClip);
 
         Log("Page 1 complete.");
+
+        // GO BACK TO MAP
+        if (flowController != null)
+        {
+            flowController.GoToMap2();
+        }
     }
 
     private IEnumerator PlayVO(AudioClip clip)
@@ -168,12 +154,6 @@ public class Page1Controller : MonoBehaviour
             yield return null;
     }
 
-    private void PlaySFX(AudioClip clip)
-    {
-        if (clip == null || sfxSource == null) return;
-        sfxSource.PlayOneShot(clip);
-    }
-
     private void Log(string msg)
     {
         if (verboseLogs)
@@ -184,4 +164,5 @@ public class Page1Controller : MonoBehaviour
     {
         Debug.LogError("[Page1Controller] " + msg, this);
     }
+    
 }

@@ -1,70 +1,60 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class TurnPage : MonoBehaviour
 {
-    LocalPortalController localPortalController;
-    public GameObject page1;
-    public GameObject page2;
-    public GameObject page3;
-    [Header("Debug Triggers")]
-    public bool testPage1To2 = false;
-    public bool testPage2To3 = false;
+    public LocalPortalController portal;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Audio")]
+    public AudioSource sfxSource;
+    public AudioClip pageTurnClip;
+
+    private void Awake()
     {
-        localPortalController=GetComponent<LocalPortalController>();
+        if (portal == null)
+            portal = GetComponent<LocalPortalController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator Switch(GameObject currentPage, GameObject nextPage)
     {
-        // 在 Inspector 里勾选这个 bool 就能触发测试
-        if (testPage1To2)
-        {
-            testPage1To2 = false; // 自动重置，防止重复触发
-            StartCoroutine(SwitchPageSequence(page1, page2));
-            // SwicthPage(page1,page2);
-        }
+        PlaySFX(pageTurnClip);
+        yield return new WaitForSeconds(0.05f);
 
-        if (testPage2To3)
-        {
-            testPage2To3 = false;
-            StartCoroutine(SwitchPageSequence(page2, page3));
-            //  SwicthPage(page2,page3);
-        }
-    }
-    
-    IEnumerator SwitchPageSequence(GameObject currentPage, GameObject nextPage)
-    {
-        // 1. 先让当前页面缩小
         yield return StartCoroutine(Shrink());
 
-        // 2. 缩小动画彻底播完后，再切换显示状态
         if (currentPage != null) currentPage.SetActive(false);
         if (nextPage != null) nextPage.SetActive(true);
-         yield return new WaitForSeconds(0.7f);
-        // 3. 让新页面展开
+
+        yield return new WaitForSeconds(0.2f);
+
         yield return StartCoroutine(Expand());
     }
-    IEnumerator Shrink()
+
+    private IEnumerator Shrink()
     {
-        localPortalController.ShrinkPortal();
-        while (localPortalController.radius > 0.01f)
-    {
-        yield return null; // 每帧等待，直到半径接近 0
-    }
+        if (portal == null)
+            yield break;
+
+        portal.ShrinkPortal();
+
+        while (portal.radius > 0.01f)
+            yield return null;
     }
 
-    IEnumerator Expand()
+    private IEnumerator Expand()
     {
-        localPortalController.ExpandPortal();
-        while (localPortalController.radius < 2.99f)
-    {
-        // 告诉 Unity：这一帧先停这，下一帧再回来检查条件
-        yield return null; 
+        if (portal == null)
+            yield break;
+
+        portal.ExpandPortal();
+
+        while (portal.radius < 2.99f)
+            yield return null;
     }
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && sfxSource != null)
+            sfxSource.PlayOneShot(clip);
     }
 }

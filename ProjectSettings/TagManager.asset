@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlankSnapZone
+  - StoneClearZone
   layers:
   - Default
   - TransparentFX
