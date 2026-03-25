@@ -20,8 +20,8 @@ Shader "Custom/VRWaterSimple"
         _FresnelStrength ("Fresnel Strength", Range(0, 1)) = 0.5
 
         _Alpha ("Transparency", Range(0,1)) = 0.8
-        _WaveAmplitude ("Wave Height", Range(0,1)) = 0.1
-        _WaveFrequency ("Wave Frequency", Range(0,10)) = 2
+        _WaveAmplitude ("Wave Height", Range(0,1)) = 0.03
+        _WaveFrequency ("Wave Frequency", Range(0,20)) = 15
         _WaveSpeed ("Wave Speed", Range(0,5)) = 1
     }
 
@@ -82,10 +82,16 @@ Shader "Custom/VRWaterSimple"
 
             float3 worldPos = TransformObjectToWorld(v.positionOS.xyz);
 
-            // 🌊 波浪计算
-            float wave = sin(worldPos.x * _WaveFrequency - _Time.y * _WaveSpeed)
-                    + cos(worldPos.z * _WaveFrequency - _Time.y * _WaveSpeed);
+            // // 🌊 波浪计算
+            // float wave = sin(worldPos.x * _WaveFrequency - _Time.y * _WaveSpeed)
+            //         + cos(worldPos.z * _WaveFrequency - _Time.y * _WaveSpeed);
 
+            // wave *= _WaveAmplitude;
+            float wave1 = sin(worldPos.x * _WaveFrequency - _Time.y * _WaveSpeed);
+            float wave2 = cos(worldPos.z * (_WaveFrequency * 1.5) - _Time.y * (_WaveSpeed * 1.2));
+            float wave3 = sin((worldPos.x + worldPos.z) * (_WaveFrequency * 0.7) - _Time.y * 0.8);
+
+            float wave = (wave1 + wave2 + wave3) * 0.33;
             wave *= _WaveAmplitude;
 
             // 👉 修改高度
