@@ -4,6 +4,7 @@ using UnityEngine;
 public class Page1Controller : MonoBehaviour
 {
     public MapFlowController flowController;
+
     [Header("Debug")]
     public bool autoStartOnEnable = false;
     public bool skipIntroSequence = false;
@@ -37,7 +38,6 @@ public class Page1Controller : MonoBehaviour
     public BridgePuzzleTracker bridgePuzzle;
 
     [Header("Timing")]
-    public float pageMagicDuration = 1.25f;
     public float jumpOntoBridgeDuration = 1.0f;
     public float jumpOffBridgeDuration = 0.75f;
     public float afterSitDelay = 1.0f;
@@ -57,6 +57,36 @@ public class Page1Controller : MonoBehaviour
         if (pageStarted) return;
         pageStarted = true;
         StartCoroutine(Page1Sequence());
+    }
+
+    private IEnumerator MoveAndPlayVO(Transform target, AudioClip clip)
+    {
+        bool startedMove = childMotor.MoveTo(target);
+        if (!startedMove)
+        {
+            LogError("Failed to path to " + target.name);
+            yield break;
+        }
+
+        bool voStarted = false;
+
+        if (clip != null && voSource != null)
+        {
+            voSource.clip = clip;
+            voSource.Play();
+            voStarted = true;
+        }
+
+        // Stop movement immediately on arrival so animation returns to idle
+        yield return new WaitUntil(() => childMotor.HasReachedDestination());
+        childMotor.StopMoving();
+
+        // Then wait for the VO to finish before continuing
+        if (voStarted)
+        {
+            while (voSource.isPlaying)
+                yield return null;
+        }
     }
 
     private IEnumerator Page1Sequence()
@@ -80,12 +110,23 @@ public class Page1Controller : MonoBehaviour
         yield return null;
         yield return null;
 
-        childMotor.MoveTo(bridgeWaitPoint);
+        if (!skipIntroSequence)
+            yield return PlayVO(introClip);
 
         if (!skipIntroSequence)
-            yield return PlayVO(walkingToBridgeClip);
+            yield return MoveAndPlayVO(bridgeWaitPoint, walkingToBridgeClip);
+        else
+        {
+            bool startedMove = childMotor.MoveTo(bridgeWaitPoint);
+            if (!startedMove)
+            {
+                LogError("Failed to path to bridgeWaitPoint.");
+                yield break;
+            }
 
-        yield return new WaitUntil(() => childMotor.HasReachedDestination());
+            yield return new WaitUntil(() => childMotor.HasReachedDestination());
+            childMotor.StopMoving();
+        }
 
         yield return PlayVO(idleAtBridgeClip);
         yield return PlayVO(childHintClip);
@@ -111,22 +152,43 @@ public class Page1Controller : MonoBehaviour
 
         yield return PlayVO(bridgeFinishedClip);
 
-        childMotor.MoveTo(bridgeStartPoint);
+        bool startedBridgeMove = childMotor.MoveTo(bridgeStartPoint);
+        if (!startedBridgeMove)
+        {
+            LogError("Failed to path to bridgeStartPoint.");
+            yield break;
+        }
+
         yield return new WaitUntil(() => childMotor.HasReachedDestination());
+        childMotor.StopMoving();
 
         childMotor.FaceTarget(bridgeEndPoint);
         childMotor.PlayBigJump();
         yield return new WaitForSeconds(jumpOntoBridgeDuration);
 
-        childMotor.MoveToNoWalk(bridgeEndPoint);
+        bool startedCrossMove = childMotor.MoveToNoWalk(bridgeEndPoint);
+        if (!startedCrossMove)
+        {
+            LogError("Failed to path to bridgeEndPoint.");
+            yield break;
+        }
+
         yield return new WaitUntil(() => childMotor.HasReachedDestination());
+        childMotor.StopMoving();
 
         childMotor.FaceTarget(diaryPoint);
         childMotor.PlaySmallJump();
         yield return new WaitForSeconds(jumpOffBridgeDuration);
 
-        childMotor.MoveTo(diaryPoint);
+        bool startedDiaryMove = childMotor.MoveTo(diaryPoint);
+        if (!startedDiaryMove)
+        {
+            LogError("Failed to path to diaryPoint.");
+            yield break;
+        }
+
         yield return new WaitUntil(() => childMotor.HasReachedDestination());
+        childMotor.StopMoving();
 
         childMotor.PlaySit();
         yield return new WaitForSeconds(afterSitDelay);
@@ -135,11 +197,8 @@ public class Page1Controller : MonoBehaviour
 
         Log("Page 1 complete.");
 
-        // GO BACK TO MAP
         if (flowController != null)
-        {
             flowController.GoToMap2();
-        }
     }
 
     private IEnumerator PlayVO(AudioClip clip)
@@ -164,5 +223,4 @@ public class Page1Controller : MonoBehaviour
     {
         Debug.LogError("[Page1Controller] " + msg, this);
     }
-    
 }
