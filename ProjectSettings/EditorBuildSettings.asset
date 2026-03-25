@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Henry/HenryScene.unity
     guid: 2e3bd2e78f35ac841b9293468b41ffc5
+  - enabled: 1
+    path: Assets/Scenes/Page3.unity
+    guid: f1a22084516f94d5cad278cda42e3088
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7408f526bfeac453ca227ead6e0342cc, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
